@@ -1,0 +1,9 @@
+{
+  "name": "sql_helper",
+  "version": "1.0",
+  "description": "It is a SQL helper",
+  "dependencies": {
+    "layui-src": "^2.4.5",
+    "mysql": "^2.16.0"
+  }
+}

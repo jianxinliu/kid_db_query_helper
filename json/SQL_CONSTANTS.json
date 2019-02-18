@@ -1,0 +1,5 @@
+{
+    "SHOW_TABLE" : "SHOW TABLES"
+    ,"SELECT_ALL_FROM" : "SELECT * FROM "
+    ,"DESC" : "DESC "
+}
