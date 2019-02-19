@@ -7,26 +7,28 @@ var Connect = require('./connect')
     , config = util.readFile(__dirname+'/../json/config.json')
 
     , conn
+    , currentDb
     , currentDBConf = config.currentDBConf
     
 // ======================================= test ================================= //
 // ("mysql://root:123@localhost:3306/mysql")
-conn = connect(
-    currentDBConf.host
-    , currentDBConf.user
-    , currentDBConf.password
-    , currentDBConf.port
-    , currentDBConf.database)
 
-showTables(c => {
-    console.log(c)
-    // desc(c[0], res => {
-    //     console.log(res)
-    // })
-    select_all_from(c[0],ret => {
-        console.log(ret)
-    })
-})
+// conn = connect(
+//     currentDBConf.host
+//     , currentDBConf.user
+//     , currentDBConf.password
+//     , currentDBConf.port
+//     , currentDBConf.database)
+
+// showTables(c => {
+//     console.log(c)
+//     // desc(c[0], res => {
+//     //     console.log(res)
+//     // })
+//     select_all_from(c[0],ret => {
+//         console.log(ret)
+//     })
+// })
 
 // ======================================= exports ================================== //
 module.exports = function () {
@@ -52,15 +54,24 @@ module.exports = function () {
  * @returns connection
  */
 function connect(host, user, password, port, database, other) {
-    let connection = ConnectUtil.getConnect({
-        host
-        , user
-        , password
-        , port
-        , database
-        , multipleStatements: true
-    })
-    connection.connect()
+    let connection
+    if(conn && currentDb === database){
+        connection = conn
+    }else{
+        console.log('-------------------------a new connection ')
+        connection = ConnectUtil.getConnect({
+            host
+            , user
+            , password
+            , port
+            , database
+            , multipleStatements: true
+        })
+        // init conn,cache currentDb
+        conn = connection
+        currentDb = database
+        connection.connect()
+    }
     // cache the connect properties
     let curr = config.currentDBConf
     curr.host = host

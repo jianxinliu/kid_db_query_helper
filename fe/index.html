@@ -25,23 +25,26 @@
         </div>
 
         <div class="layui-body">
-            <div style="padding: 15px;"> content </div>
+            <div style="padding: 15px;" id="content"> </div>
         </div>
 
         <div class="layui-footer">
             status panel
         </div>
     </div>
+    <script src="/json/code_template.js"></script>
     <script src="/layui.js"></script>
     <script src="/js/index.js"></script>
-    <!-- <script>
+    <script>
         //JavaScript代码区域
 
         layui.config({
             base: '/js/'
-        }).use('index')
+        }).extend({
+            jx_table:'jx_table'
+        })
 
-    </script> -->
+    </script>
 </body>
 
 </html>

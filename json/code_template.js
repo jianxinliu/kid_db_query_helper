@@ -1,4 +1,4 @@
-{
+var htmlTemplate = {
     "add_conn_panel":{
         "general":"<a>general</a>"
         ,"advence":"<a>advence</a>"
