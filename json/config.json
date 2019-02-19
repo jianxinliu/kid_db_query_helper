@@ -8,6 +8,5 @@
     },
     "server":{
         "port":"8394"
-        ,"basePath":"/home/ljx/data_code/sts_workspace/kids/kids_db_query"
     }
 }
